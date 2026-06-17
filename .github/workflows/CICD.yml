@@ -1,6 +1,11 @@
 name: CICD workflow
 
 on:
+    push:
+        branches: main
+        paths:
+            - 'index.html'
+
     workflow_dispatch:
 
 jobs:
