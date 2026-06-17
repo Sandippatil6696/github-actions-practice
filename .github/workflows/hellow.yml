@@ -14,3 +14,11 @@ jobs:
 
             - name: greet current user
               run: echo "hellow $USER"
+
+    
+    details:
+        runs-on: ubuntu-latest
+        steps:
+            - name: get python version && docker version 
+              run: docker --version && python3 --version 
+                
