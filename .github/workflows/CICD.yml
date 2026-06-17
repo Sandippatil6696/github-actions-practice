@@ -1,11 +1,20 @@
 name: CICD workflow
 
 on:
-    push:
-        branches: [main]
-        paths:
-            - 'index.html'
+    # push:
+    #     branches: [main]
+    #     paths:
+    #         - 'index.html'
     workflow_dispatch:
+        inputs:
+            environments:
+                default: 'dev'
+                required: true
+                type: choice
+                options:
+                    - dev
+                    - staging
+                    - prod
 
 jobs:
     code:
@@ -27,6 +36,7 @@ jobs:
               run: echo "testing"
     deploy:
         runs-on: ubuntu-latest
+        if: ${{github.event.inputs.environments== 'dev'}}
         needs: test
         steps:
             - name : deploy to server 
