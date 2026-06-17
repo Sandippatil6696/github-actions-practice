@@ -1,1 +1,16 @@
+name: hellow workflow 
 
+on:
+    push:
+        branches: main
+
+jobs:
+
+    greet:
+        runs-on: ubuntu-latest
+        steps:
+            - name: greet user
+              run: echo "hellow dosto"
+
+            - name: greet current user
+              run: echo "hellow $USER"
